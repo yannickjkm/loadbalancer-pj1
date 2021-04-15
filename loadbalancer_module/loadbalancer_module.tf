@@ -38,6 +38,9 @@ resource "aws_lb_target_group" "sampleapp-http-tg" {
   vpc_id   = module.shared_vars.vpcid
 }
 
+output "target_group" {
+  value = aws_lb_target_group.sampleapp-http-tg.id
+}
 
 
 // Adding Listener
