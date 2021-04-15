@@ -23,4 +23,5 @@ module "loadbalancer_module" {
 module "autoscaling_module" {
     source        = "./autoscaling_module"
     private_sg_id = module.network_module.private_sg_id
+    target_group  = module.loadbalancer_module.target_group
 }
