@@ -1,14 +1,14 @@
 
 
-# Calling the shared_vars module
+// Calling the shared_vars module
 
 module "shared_vars" {
     source = "../shared_vars"
 }
 
-# ----------------------
+# ======================
 # Public Security Group 
-# ----------------------
+# ======================
 
 resource "aws_security_group" "public_sg" {
   name        = "public_sg_${module.shared_vars.env_suffix}"
@@ -36,16 +36,18 @@ resource "aws_security_group" "public_sg" {
 
 }
 
-# ========================================
-# output the public security group details
-# ========================================
+
+// output the public security group details
+
 output "public_sg_id" {
   value = aws_security_group.public_sg.id
 }
 
+
 # =======================
 # Private Security Group
 # =======================
+
 resource "aws_security_group" "private_sg" {
   name        = "private_sg_${module.shared_vars.env_suffix}"
   description = "Private Security Group for ELB in ${module.shared_vars.env_suffix}"
@@ -72,9 +74,9 @@ resource "aws_security_group" "private_sg" {
 
 }
 
-# ========================================
-# output the public security group details
-# ========================================
+
+// output the public security group details
+
 output "private_sg_id" {
   value = aws_security_group.private_sg.id
 }
